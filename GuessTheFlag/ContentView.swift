@@ -8,25 +8,14 @@
 import SwiftUI
 
 struct ContentView: View {
-    var body: some View {
-        VStack {
-            Spacer()
-            HStack(spacing: 50){
-                Text("Hello, world!")
-                Text("Hello, world!")
-            }
-            HStack(alignment: .lastTextBaseline){
-                Text("Hello, world!")
-                Text("Hello, world!")
-            }
-            ZStack(alignment: .top){
-                Text("Hello, world!")
-                Text("Hello, world!")
-            }
-            Spacer()
-            Spacer()
+    
+    
+    var body: some View{
+        ZStack{
+            Color.teal.frame(maxWidth: 200, minHeight: 200).ignoresSafeArea()
+            Text("HIII")
+            
         }
-        .padding()
     }
 }
 
