@@ -13,7 +13,16 @@ struct ContentView: View {
     var body: some View{
         ZStack{
             Color.teal.frame(maxWidth: 200, minHeight: 200).ignoresSafeArea()
-            Text("HIII")
+            Color.pink.frame(maxWidth: 50, minHeight: 90).ignoresSafeArea()
+            Text("HIII").foregroundStyle(.secondary)
+                .font(.largeTitle)
+                .padding(50)
+                .glassEffect(.regular, in: .rect(cornerRadius: 24))
+                
+                
+            
+                
+            
             
         }
     }
