@@ -7,24 +7,33 @@
 
 import SwiftUI
 
+enum AppData{
+    static var points: [SIMD2<Float>] = [
+        [0, 0], [0.5, 0], [1.0, 0],
+        [0, 0.5], [0.5, 0.5], [1.0, 0.5],
+        [0, 1.0],[0.5, 1.0],[1.0, 1.0],
+    ]
+    
+    static var Colorr : [Color] = [
+        .black, .pink, .red, .yellow
+    ]
+    
+    static func RandomColors() -> [Color] {
+        (0...8).map {_ in Colorr.randomElement()!}
+    }
+}
+
 struct ContentView: View {
-    
-    
+   
+    @State private var col = AppData.RandomColors();
     var body: some View{
-        ZStack{
-            Color.teal.frame(maxWidth: 200, minHeight: 200).ignoresSafeArea()
-            Color.pink.frame(maxWidth: 50, minHeight: 90).ignoresSafeArea()
-            Text("HIII").foregroundStyle(.secondary)
-                .font(.largeTitle)
-                .padding(50)
-                .background(.thinMaterial, in: .rect(cornerRadius: 20))
-                
-                
-            
-                
-            
-            
+        NavigationStack{
+            MeshGradient(width: 3, height: 3, points: AppData.points, colors: col)
+            .navigationTitle("Mesh.")
+            .navigationBarTitleDisplayMode(.automatic)
+            .ignoresSafeArea(edges: .bottom)
         }
+        
     }
 }
 
