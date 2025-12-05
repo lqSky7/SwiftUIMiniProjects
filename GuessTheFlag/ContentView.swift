@@ -11,10 +11,18 @@ struct ContentView: View {
     var body: some View {
         VStack {
             Spacer()
-            Text("Hello, world!")
-            Text("Hello, world!")
-            Text("Hello, world!")
-            Text("Hello, world!")
+            HStack(spacing: 50){
+                Text("Hello, world!")
+                Text("Hello, world!")
+            }
+            HStack(alignment: .lastTextBaseline){
+                Text("Hello, world!")
+                Text("Hello, world!")
+            }
+            ZStack(alignment: .top){
+                Text("Hello, world!")
+                Text("Hello, world!")
+            }
             Spacer()
             Spacer()
         }
