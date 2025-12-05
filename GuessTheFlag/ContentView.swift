@@ -17,7 +17,7 @@ struct ContentView: View {
             Text("HIII").foregroundStyle(.secondary)
                 .font(.largeTitle)
                 .padding(50)
-                .glassEffect(.regular, in: .rect(cornerRadius: 24))
+                .background(.thinMaterial, in: .rect(cornerRadius: 20))
                 
                 
             
