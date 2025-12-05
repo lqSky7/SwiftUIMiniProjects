@@ -12,11 +12,8 @@ struct ContentView: View {
 
     var body: some View{
         NavigationStack{
-            
-                Text("HII")
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .background(.indigo.gradient)
-            
+            Button("TestB1", role: .close){}
+                .buttonStyle(.glassProminent)
         }
         
     }
