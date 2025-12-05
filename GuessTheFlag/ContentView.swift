@@ -8,14 +8,15 @@
 import SwiftUI
 
 struct ContentView: View {
-   
-
+    @State private var showingAL = false
+    
     var body: some View{
-        NavigationStack{
-            Button("TestB1", role: .close){}
-                .buttonStyle(.glassProminent)
+        Button("Show alrt"){
+            showingAL = true
+        }.alert("Important", isPresented: $showingAL){
+            Button("OK", role: .confirm){}
+            Button("REPORT", role: .destructive) {}
         }
-        
     }
 }
 
