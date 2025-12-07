@@ -46,6 +46,7 @@ struct ContentView: View {
                     number in
                     Button{
                         flagTapped(curr: number)
+                    
                     }
                     label: {flaggedImage(with: countries[number])
                     }
@@ -60,12 +61,15 @@ struct ContentView: View {
           
         }.alert(result, isPresented: $showResult) {
             Button("Continue", action: shuff)
-        } message: {
-            Text("\(nu)").fontDesign(.serif)
         }
     }
     func flagTapped(curr: Int){
-        if(curr == correctAns){
+        if(youWin()){
+            showResult = true
+            result = "You Won!!"
+            nu = 3
+        }
+        else if(curr == correctAns){
             showResult = true
             result = "Correct!"
             nu+=1
@@ -73,6 +77,14 @@ struct ContentView: View {
             showResult = true
             result = "False!"
         }
+        
+    
+    }
+    
+    func youWin() -> Bool{
+        if(nu >= 2){
+            return true
+        }; return false
     }
     
     func shuff(){
