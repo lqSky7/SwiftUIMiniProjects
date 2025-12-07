@@ -40,20 +40,24 @@ struct ContentView: View {
                 VStack(spacing: 10){
                     Text("Tap the flag of").italic().foregroundColor(.white)
                     Text(countries[correctAns]).bold().foregroundColor(.white).font(.largeTitle).fontDesign(.serif)
-                }
+                }.frame(minWidth: 250, minHeight: 100)
+                    .glassEffect(.clear.interactive())
                 ForEach(0..<3){
                     number in
                     Button{
                         flagTapped(curr: number)
-                        
                     }
                     label: {flaggedImage(with: countries[number])
                     }
                     
                 }
-                
+                Text("Score : \(nu)")
+                    .padding().colorInvert()
+//                    .background(.ultraThinMaterial)
+                    .glassEffect(.clear.interactive())
+                    .fontWidth(.expanded)
             }
-            
+          
         }.alert(result, isPresented: $showResult) {
             Button("Continue", action: shuff)
         } message: {
