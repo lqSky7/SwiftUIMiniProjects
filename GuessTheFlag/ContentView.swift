@@ -13,14 +13,14 @@ struct ContentView: View {
     @State var correctAns = Int.random(in: 0...2)
     @State var showResult = false
     @State var result = ""
-    
+    @State var nu = 0
     var body: some View{
         ZStack{
             RadialGradient(colors: [.pink,.black], center: .center, startRadius: 0, endRadius: 340).ignoresSafeArea()
             VStack(spacing: 30){
-                HStack{
+                VStack(spacing: 10){
                     Text("Tap the flag of").italic().foregroundColor(.white)
-                    Text(countries[correctAns]).bold().foregroundColor(.white)
+                    Text(countries[correctAns]).bold().foregroundColor(.white).font(.largeTitle).fontDesign(.serif)
                 }
                 ForEach(0..<3){
                     number in
@@ -28,22 +28,24 @@ struct ContentView: View {
                         flagTapped(curr: number)
                         
                     }
-                    label: {Image(countries[number])
+                    label: {Image(countries[number]).clipShape(RoundedRectangle(cornerRadius: 7))
                     }
                     
                 }
                 
             }
             
-        }.alert(result , isPresented: $showResult){
+        }.alert(result, isPresented: $showResult) {
             Button("Continue", action: shuff)
-            // FIX: SHOW SCORE USER
+        } message: {
+            Text("\(nu)").fontDesign(.serif)
         }
     }
     func flagTapped(curr: Int){
         if(curr == correctAns){
             showResult = true
             result = "Correct!"
+            nu+=1
         } else {
             showResult = true
             result = "False!"
