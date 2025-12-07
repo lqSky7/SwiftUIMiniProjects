@@ -7,7 +7,26 @@
 
 import SwiftUI
 
+struct FlagImage: ViewModifier{
+    var img: Image
+    
+    func body(content: Content) -> some View {
+        VStack{
+            img
+            .clipShape(RoundedRectangle(cornerRadius: 7))
+        }
+    }
+    
+}
+
+extension View {
+    func flaggedImage(with name: String) -> some View{
+        modifier(FlagImage(img: Image(name)))
+    }
+}
+
 struct ContentView: View {
+    
     @State var countries = ["Estonia", "France", "Germany", "Ireland", "Italy", "Nigeria",
                      "Poland", "Spain", "UK", "Ukraine", "US"].shuffled()
     @State var correctAns = Int.random(in: 0...2)
@@ -28,7 +47,7 @@ struct ContentView: View {
                         flagTapped(curr: number)
                         
                     }
-                    label: {Image(countries[number]).clipShape(RoundedRectangle(cornerRadius: 7))
+                    label: {flaggedImage(with: countries[number])
                     }
                     
                 }
